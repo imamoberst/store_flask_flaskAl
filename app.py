@@ -2,7 +2,7 @@ from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
 from security import authenticate, identity
-from resources.user import UserRegistration
+from resources.user import UserRegistration, User, Users
 from resources.item import Item, ItemList
 from resources.store import StoreList, Store
 from datetime import timedelta
@@ -29,6 +29,8 @@ api.add_resource(ItemList, '/items')
 api.add_resource(UserRegistration, '/register')
 api.add_resource(Store, '/store/<string:name>')
 api.add_resource(StoreList, '/stores')
+api.add_resource(User, '/user/<int:user_id>')
+api.add_resource(Users, '/users')
 
 if __name__ == '__main__':
     db.init_app(app)
